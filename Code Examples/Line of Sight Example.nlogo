@@ -49,7 +49,8 @@ to mark-line-of-sight  ;; walker procedure
     if p != last-patch [
       ;; find the angle between the turtle's position
       ;; and the top of the patch.
-      let a2 atan dist (elevation - [elevation] of p)
+      let d distance p
+      let a2 atan d (elevation - [elevation] of p)
       ;; if that angle is less than the angle toward the
       ;; last visible patch there is no direct line from the turtle
       ;; to the patch in question that is not obstructed by another
