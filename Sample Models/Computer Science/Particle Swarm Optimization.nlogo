@@ -124,10 +124,10 @@ to go
 
     ; speed limits are particularly necessary because we are dealing with a toroidal (wrapping) world,
     ; which means that particles can start warping around the world at ridiculous speeds
-    if (vx > particle-speed-limit) [ set vx particle-speed-limit ]
-    if (vx < 0 - particle-speed-limit) [ set vx 0 - particle-speed-limit ]
-    if (vy > particle-speed-limit) [ set vy particle-speed-limit ]
-    if (vy < 0 - particle-speed-limit) [ set vy 0 - particle-speed-limit ]
+    if sqrt (vx * vx + vy * vy) > particle-speed-limit [
+      set vx particle-speed-limit * dx
+      set vy particle-speed-limit * dy
+    ]
 
     ; face in the direction of my velocity
     facexy (xcor + vx) (ycor + vy)
